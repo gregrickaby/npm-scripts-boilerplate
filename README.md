@@ -11,23 +11,23 @@ Thanks to Damon Bauer for [his post](https://css-tricks.com/why-npm-scripts/) an
 
 ## Quick Start
 
-Clone
-
+**Clone**
 ```bash
 git clone https://github.com/gregrickaby/npm-scripts-boilerplate.git
 ```
 
-Install
+**Install**
 ```bash
 npm i
 ```
 
-Set your proxy URL in `package.json` under the `serve` task. For example:
+**Set your proxy URL in `package.json` under the `serve` task.**
 ```bash
 browser-sync start --https --proxy 'https://gregrickaby.test' --files \'dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\'
 ```
+(or you could remove the proxy... your choice!)
 
-Watch
+**Watch**
 ```bash
 npm run watch
 ```
