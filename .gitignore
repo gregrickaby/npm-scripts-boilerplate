@@ -88,6 +88,9 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Compiled files
+dist/
+
 ### Sass ###
 .sass-cache/
 *.css.map
