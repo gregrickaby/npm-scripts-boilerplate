@@ -1,7 +1,6 @@
-# npm-build-boilerplate
+# npm-scripts-boilerplate
 
-A collection of packages that build a website using `npm scripts`.
-Thanks to Damon Bauer for [his post](https://css-tricks.com/why-npm-scripts/) and his  [NPM Build Boilerplate](https://github.com/damonbauer/npm-build-boilerplate) for which this is based on.
+No need for Gulp, Grunt, or Webpack here... this is a collection of packages that build a website using `npm scripts` instead. Thanks to Damon Bauer for his post on [CSS Tricks](https://css-tricks.com/why-npm-scripts/) and his  [NPM Build Boilerplate](https://github.com/damonbauer/npm-build-boilerplate) for which this is based on.
 
 * [Quick start](#quick-start)
 * [List of packages used](#list-of-packages-used)
