@@ -1,0 +1,72 @@
+{
+  "name": "npm_scripts_boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Greg Rickaby <greg@gregrickaby.com>",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gregrickaby/npm-scripts-boilerplate.git"
+  },
+  "keywords": [
+    "npm",
+    "scripts",
+    "npm scripts",
+    "watch",
+    "minify",
+    "compress"
+  ],
+  "bugs": {
+    "url": "https://github.com/gregrickaby/npm-scripts-boilerplate/issues"
+  },
+  "homepage": "https://github.com/gregrickaby/npm-scripts-boilerplate#readme",
+  "main": "src/js/app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "cssnano": "^4.1.10",
+    "eslint": "^5.16.0",
+    "imagemin-cli": "^4.0.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "postcss-cli": "^6.1.2",
+    "rimraf": "^2.6.3",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended": "^2.2.0",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^1.2.2",
+    "uglify-js": "^3.5.9"
+  },
+  "scripts": {
+    "clean": "rimraf dist/{css/*,js/*,images/*}",
+    "optimizecss": "postcss dist/css/app.css -c postcss.config.js -o dist/css/app.css",
+    "scss": "node-sass src/scss/app.scss -o dist/css",
+    "lint": "eslint src/js || true",
+    "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
+    "uglify": "mkdirp dist/js -p && uglifyjs src/js/*.js -m -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
+    "imagemin": "imagemin src/images/* -o dist/images",
+    "icons": "svgo -f src/images/icons -o dist/images/icons && svg-sprite-generate -d dist/images/icons -o dist/images/icons/sprite.svg",
+    "serve": "browser-sync start --https --proxy 'https://yoursite.test' --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
+    "build:css": "run-s lint-scss scss optimizecss",
+    "build:js": "run-s lint uglify",
+    "build:images": "run-s imagemin icons",
+    "build": "run-s clean build:*",
+    "watch:css": "onchange \"src/scss\" -- run-s build:css",
+    "watch:js": "onchange \"src/js\" -- run-s build:js",
+    "watch:images": "onchange \"src/images\" -- run-s build:images",
+    "watch": "run-p serve watch:*",
+    "postinstall": "run-s build"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "eslintConfig": {
+    "extends": "eslint:recommended"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-recommended"
+  }
+}
